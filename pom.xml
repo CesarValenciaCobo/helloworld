@@ -12,6 +12,7 @@
     <artifactId>helloworld</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>helloworld</name>
+    <finalName>system4</finalName>
     <description>Demo project for Spring Boot</description>
     <!-- define the packaging type -->
     <packaging>war</packaging>
