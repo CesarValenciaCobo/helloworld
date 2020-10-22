@@ -14,7 +14,7 @@ pipeline{
         }
         stage ('Deployment Stage'){
             steps{
-                    sh 'mvn deploy -PPROD'
+                    sh 'mvn deploy'
             }
         }
     }
