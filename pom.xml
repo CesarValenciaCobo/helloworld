@@ -96,7 +96,7 @@
         <repository>
             <id>internal.repo</id>
             <name>Internal repo</name>
-            <url>file:///Users/cesarvalencia/desktop/tools</url>
+            <url>file:///Users/cesarvalencia/desktop/tools/helloworld</url>
         </repository>
     </distributionManagement>
 
