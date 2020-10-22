@@ -15,7 +15,7 @@ pipeline{
         stage ('Deployment Stage'){
             steps{
                     sh 'mvn deploy'
-                    sh 'cp target/*.war /Users/cesarvalencia/desktop/tools/tomcat/webapps/'
+                    sh 'cp target/helloworld.war /Users/cesarvalencia/desktop/tools/tomcat/webapps/'
             }
         }
     }
