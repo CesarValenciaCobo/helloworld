@@ -36,7 +36,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]){
                     sh "docker login -u cvalenciadocker123 -p ${DOCKER_HUB_CREDENTIALS}"
                 }
-                sh "docker push -t cvalenciadocker123/helloworld"
+                sh "docker push cvalenciadocker123/helloworld"
 
             }
         }
