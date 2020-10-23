@@ -11,7 +11,7 @@ pipeline{
         }
         stage ('Testing Stage'){
             steps{
-                    sh 'mvn test'
+                    sh 'mvn clean test compile package'
             }
         }
         stage ('Deployment Stage'){
@@ -24,6 +24,15 @@ pipeline{
                                 subject: 'Pipeline build failed',
                                 to: 'cesar.valencia49@gmail.com')
             }
+        }
+        stage("Docker: Build image"){
+            sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
+        }
+        stage("Docker: push image"){
+            withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]){
+                sh "docker login -u cvalenciadocker123 -p ${DOCKER_HUB_CREDENTIALS}"
+            }
+            sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
         }
     }
 }

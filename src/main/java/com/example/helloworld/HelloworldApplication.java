@@ -22,6 +22,6 @@ public class HelloworldApplication extends SpringBootServletInitializer{
 
     @RequestMapping(value = "/")
     public String hello() {
-        return "Hello World from Tomcat,,,,,,";
+        return "Hello World from Tomcat and docker and kubernetes...";
     }
 }
