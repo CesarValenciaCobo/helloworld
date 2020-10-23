@@ -11,20 +11,20 @@ pipeline{
         }
         stage ('Testing Stage'){
             steps{
-                    sh 'mvn clean test compile'
+                    sh 'mvn clean test compile package'
             }
         }
-        stage ('Deployment Stage'){
-            steps{
-                    sh 'mvn package'
-                    sh 'cp target/helloworld.war /Users/cesarvalencia/desktop/tools/tomcat/webapps/'
-                    mail (body:
-                                "Pipeline error: Fix me.",
-                                from: 'cesar.valencia49@gmail.com',
-                                subject: 'Pipeline build failed',
-                                to: 'cesar.valencia49@gmail.com')
-            }
-        }
+//         stage ('Deployment Stage'){
+//             steps{
+//                     sh 'mvn package'
+//                     sh 'cp target/helloworld.jar /Users/cesarvalencia/desktop/tools/tomcat/webapps/'
+//                     mail (body:
+//                                 "Pipeline error: Fix me.",
+//                                 from: 'cesar.valencia49@gmail.com',
+//                                 subject: 'Pipeline build failed',
+//                                 to: 'cesar.valencia49@gmail.com')
+//             }
+//         }
         stage("Docker: Build image"){
             steps{
                         sh "docker build -t cvalenciadocker123/helloworld ."
