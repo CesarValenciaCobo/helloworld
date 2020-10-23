@@ -27,7 +27,7 @@ pipeline{
         }
         stage("Docker: Build image"){
             steps{
-                        sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
+                        sh "docker build -t cvalenciadocker123/helloworld ."
             }
 
         }
@@ -36,7 +36,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]){
                     sh "docker login -u cvalenciadocker123 -p ${DOCKER_HUB_CREDENTIALS}"
                 }
-                sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
+                sh "docker push -t cvalenciadocker123/helloworld"
 
             }
         }
