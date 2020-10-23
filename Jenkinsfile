@@ -26,13 +26,19 @@ pipeline{
             }
         }
         stage("Docker: Build image"){
-            sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
+            steps{
+                        sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
+            }
+
         }
         stage("Docker: push image"){
-            withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]){
-                sh "docker login -u cvalenciadocker123 -p ${DOCKER_HUB_CREDENTIALS}"
+            steps{
+                withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]){
+                    sh "docker login -u cvalenciadocker123 -p ${DOCKER_HUB_CREDENTIALS}"
+                }
+                sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
+
             }
-            sh "docker build -t cvalenciadocker123/helloworld-jenkins-docker-integration ."
         }
     }
 }
