@@ -16,7 +16,7 @@ pipeline{
         }
         stage ('Deployment Stage'){
             steps{
-                    sh 'mvn deploy'
+                    sh 'mvn clear test package'
                     sh 'cp target/helloworld.war /Users/cesarvalencia/desktop/tools/tomcat/webapps/'
                     mail (body:
                                 "Pipeline error: Fix me.",
