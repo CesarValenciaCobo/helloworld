@@ -18,9 +18,11 @@ pipeline{
             steps{
                     sh 'mvn deploy'
                     sh 'cp target/helloworld.war /Users/cesarvalencia/desktop/tools/tomcat/webapps/'
-                    emailext body: 'Deployment when ok',
-                                        to: "${EMAIL_TO}",
-                                        subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+                    mail (body:
+                                "Pipeline error: Fix me.",
+                                from: 'cesar.valencia49@gmail.com',
+                                subject: 'Pipeline build failed',
+                                to: 'cesar.valencia49@gmail.com')
             }
         }
     }
