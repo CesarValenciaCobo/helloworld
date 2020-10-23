@@ -40,5 +40,15 @@ pipeline{
 
             }
         }
+
+        stage("Deploy application in Kubernetes Cluster"){
+            steps{
+                kubernetesDeploy(
+                    configs: 'deployment.yml',
+                    kubeconfigId:  'KUBERNETES_CLUSTER_CONFIG',
+                    enableConfigSubstitution: true
+                )
+            }
+        }
     }
 }
